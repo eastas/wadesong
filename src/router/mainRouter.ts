@@ -9,27 +9,48 @@
 
 import { RouteRecordRaw } from 'vue-router'
 
-import Home from '@/pages/home/Index.vue'
+import Home from '@/pages/discover/Index.vue'
+import { defineAsyncComponent } from 'vue'
 
 let routes: Array<RouteRecordRaw> = [
 	{
-		path: '/home',
+		path: '/wadesong/home',
 		name: 'Home',
 
 		meta: {
-			title: '首页',
+			title: '发现',
 		},
-		component: Home,
+		component: defineAsyncComponent(() => import(`@/pages/discover/Index.vue`)),
 	},
 	{
-		path: '/product',
+		path: '/wadesong/product',
 		name: 'Product',
 
 		meta: {
-			title: '产品',
+			title: '橱窗',
 			showSub: false,
 		},
-		component: () => import('@/pages/product/Index.vue'),
+		component: defineAsyncComponent(() => import(`@/pages/product/Index.vue`)),
+	},
+	{
+		path: '/wadesong/dressRoom',
+		name: 'DressRoom',
+
+		meta: {
+			title: '试衣',
+			showSub: false,
+		},
+		component: defineAsyncComponent(() => import(`@/pages/dressRoom/Index.vue`)),
+	},
+	{
+		path: '/wadesong/mine',
+		name: 'Mine',
+
+		meta: {
+			title: '我的',
+			showSub: false,
+		},
+		component: defineAsyncComponent(() => import(`@/pages/mine/Index.vue`)),
 	},
 ]
 

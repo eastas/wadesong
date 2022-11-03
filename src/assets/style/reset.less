@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Microsoft YaHei UI', '微软雅黑', '黑体', Courier, monospace;
+  font-style: normal;
+}
+
+li {
+  list-style: none;
+}
+
+// 滚动条宽度
+@scrollbarW: 6px;
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar {
+  width: @scrollbarW;
+  height: @scrollbarW;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+  border-radius: @scrollbarW;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+  border-radius: @scrollbarW;
+  background-color: var(--sy_main_color1);
+  // background-color: var(--sy_zhanwei_color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  border-radius: @scrollbarW;
+  background-color: var(--sy_main_color3);
+}
+
+/* 右下角矩形 */
+::-webkit-scrollbar-corner {
+  background-color: rgba(0, 0, 0, 0);
+}

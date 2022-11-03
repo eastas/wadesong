@@ -7,28 +7,34 @@
  * @FilePath: \official_web\src\router\index.ts
  */
 
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 import Login from '@/pages/login/Index.vue'
 
 import mainRouter from './mainRouter'
-import { ref } from 'vue'
+import { defineAsyncComponent, ref } from 'vue'
 
 let routes: Array<RouteRecordRaw & { hidden?: boolean }> = [
 	{
 		path: '/',
-		redirect: { name: 'Home' },
+		redirect: '/wadesong',
 	},
 	{
 		path: '/login',
 		name: 'Login',
 		component: Login,
 	},
-	...mainRouter,
+	{
+		path: '/wadesong',
+		name: 'Wadesong',
+		redirect: '/wadesong/home',
+		component: defineAsyncComponent(() => import(`@/pages/main/Index.vue`)),
+		children: mainRouter,
+	},
 ]
 
 const router = createRouter({
-	history: createWebHashHistory(),
+	history: createWebHistory(),
 	routes,
 })
 
@@ -40,7 +46,6 @@ router.beforeEach((to: any, from: any, next: any) => {
 		next()
 	} else {
 		next()
-
 		// if (window.sessionStorage.getItem('token')) {
 		// 	next()
 		// } else {

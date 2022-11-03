@@ -17,7 +17,7 @@ defineProps<{ msg?: string }>()
 </script>
 
 <template>
-	<h1>{{ msg }} 首页</h1>
+	<div></div>
 </template>
 
 <style scoped>

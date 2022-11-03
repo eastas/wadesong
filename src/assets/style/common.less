@@ -1,0 +1,430 @@
+@import './var.less';
+@import './reset.less';
+@import './font.less';
+
+// 开启弹性布局
+.flex {
+  display: flex;
+}
+
+.f1 {
+  flex: 1;
+}
+
+// 水平居左
+.f_hl {
+  display: flex;
+  justify-content: left;
+}
+
+// 水平居中
+.f_hc {
+  display: flex;
+  justify-content: center;
+}
+
+// 水平居右
+.f_hr {
+  display: flex;
+  justify-content: right;
+}
+
+// 垂直居上
+.f_vt {
+  display: flex;
+  align-items: flex-start;
+}
+
+// 垂直居中
+.f_vc {
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+}
+.f_vc_wp {
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+}
+
+// 垂直居中 水平两侧
+.f_vc_hb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// 垂直居中 水平环绕
+.f_vc_ha {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+//垂直居下
+.f_vb {
+  display: flex;
+  align-items: flex-end;
+}
+
+//垂直水平居中
+.f_vhc {
+  display: flex;
+  align-items: flex-end;
+}
+
+//水平轴不换行
+.f_hn {
+  flex-flow: row nowrap;
+}
+
+//水平轴换行
+.f_h {
+  flex-flow: row wrap;
+}
+
+//垂直轴不换行
+.f_vn {
+  flex-flow: column nowrap;
+}
+
+//垂直轴换行
+.f_v {
+  flex-flow: column wrap;
+}
+
+//开启固定位
+.p_f {
+  position: fixed;
+}
+
+//开启粘性定位
+.p_s {
+  position: sticky; //兼容不乐观
+}
+
+//开启相对定位
+.p_r {
+  position: relative;
+}
+
+//开启绝对定位
+.p_a {
+  position: absolute;
+}
+
+//定位居左上
+.p_lt {
+  left: 0;
+  top: 0;
+}
+
+//定位居左中
+.p_lc {
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+//定位居左下
+.p_lb {
+  left: 0;
+  bottom: 0;
+}
+
+//定位居中上
+.p_ct {
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+}
+
+//定位居中中
+.p_cc {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+//定位居中下
+.p_cb {
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+}
+
+//定位居右上
+.p_rt {
+  right: 0;
+  top: 0;
+}
+
+//定位居右中
+.p_rc {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+//定位居右下
+.p_rb {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+// 完全填充父级
+.full {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+//可滚动Y
+.scrollX {
+  overflow-x: auto;
+}
+
+//可滚动Y
+.scrollY {
+  overflow-y: auto;
+}
+
+.pd_40 {
+  padding: 40px;
+}
+
+.pd_8 {
+  padding: 8px;
+}
+
+.pd_0 {
+  padding: 0;
+}
+
+.curpoint {
+  cursor: pointer;
+}
+
+.ellipsis {
+  max-width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+// 三行隐藏
+.espMoretext {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+// 开发辅助线
+.b1b {
+  border: 1px solid blue;
+}
+.b1r {
+  border: 1px solid red;
+}
+
+// .common_bg_wrap {
+//   background: url('@/assets/images/common/common_bg.svg') no-repeat;
+//   background-position: center bottom;
+//   background-size: 100%;
+// }
+
+//企业对比 弹出
+.compare_popper_class {
+  background-color: #002b43 !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  .el-popper__arrow::before {
+    display: none;
+  }
+}
+.top_nav_popper_class {
+  background-color: #002b43 !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  z-index: 99;
+  color: #fff;
+  .el-popper__arrow::before {
+    // display: none;
+    background-color: #002b43 !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+  }
+}
+.side_nav_popper_class {
+  background-color: #002b43 !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  z-index: 99;
+  color: #fff;
+  .el-popper__arrow::before {
+    // display: none;
+    background-color: #002b43 !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+  }
+}
+
+// 居中
+.c_c {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.c_p {
+  cursor: pointer;
+}
+
+// 表单
+.el-cascader-panel {
+  background-color: #052c43;
+}
+.el-date-picker__header,
+.el-date-picker,
+.el-picker__popper {
+  background-color: #052c43 !important;
+  .el-icon {
+    color: #fff;
+  }
+}
+// .el-date-table ,.td.disabled{
+//   background-color: rgba(5, 44, 67,0.5) !important;
+// }
+
+.el-popper__arrow::before {
+  background-color: #052c43 !important;
+}
+.el-popper.is-dark {
+  background-color: #052c43 !important;
+}
+
+.el-message-box {
+  background-color: #021327 !important;
+}
+.el-message-box__title {
+  color: #fff !important;
+}
+.el-message-box__message {
+  color: #fff !important;
+}
+.el-message-box__btns {
+  .el-button--small {
+    color: #fff !important;
+    background-color: #044468;
+    &:hover {
+      background-color: #021327 !important;
+      color: #fff !important;
+    }
+  }
+}
+// 下拉框
+.el-select-dropdown {
+  background-color: #052c43;
+  .el-select-dropdown__item {
+    color: #fff !important;
+    &:hover {
+      background-color: #044468 !important;
+      //   width: 248px;
+    }
+  }
+  .el-select-dropdown__item.selected {
+    background-color: #044468 !important;
+    position: relative;
+  }
+  .el-select-dropdown__item.hover {
+    background-color: #044468 !important;
+  }
+  .el-tag--info {
+    background-color: #044468 !important;
+    color: #fff !important;
+  }
+}
+// 蒙层颜色
+.el-loading-mask {
+  background-color: rgba(5, 44, 67, 0.8) !important;
+}
+
+// 选择区域
+.el-cascader-node {
+  &:hover {
+    background-color: #044468 !important;
+  }
+}
+.el-radio__inner {
+  background-color: #052c43 !important;
+}
+.el-cascader-node.is-selectable.in-active-path {
+  background-color: #044468 !important;
+}
+.el-cascader-node:not(.is-disabled):focus {
+  background-color: #044468 !important;
+}
+
+.el-date-editor--daterange {
+  --el-text-color-regular: #fff;
+
+  .el-range-input {
+    // color: #fff;
+    background-color: #052c43;
+  }
+  //   .el-picker-panel {
+  //     background-color: none !important;
+  //   }
+}
+.el-date-range-picker.el-picker-panel {
+  --el-text-color-regular: #fff;
+  --el-datepicker-text-color: #fff;
+  --el-datepicker-off-text-color: var(--el-text-color-placeholder);
+  --el-datepicker-header-text-color: var(--el-text-color-regular);
+  --el-datepicker-icon-color: var(--el-text-color-primary);
+  --el-datepicker-border-color: var(--el-disabled-border-color);
+  --el-datepicker-inner-border-color: var(--el-border-color-light);
+
+  --el-datepicker-inrange-bg-color: #fff6;
+
+  --el-datepicker-inrange-hover-bg-color: var(--el-border-color-extra-light);
+  --el-datepicker-active-color: var(--el-color-primary);
+  --el-datepicker-hover-text-color: var(--el-color-primary);
+  background-color: transparent !important;
+  .el-date-table__row {
+    .disabled {
+      background-color: #042030;
+      .el-date-table-cell {
+        background-color: #0000;
+      }
+    }
+  }
+}
+
+// .el-date-editor {
+//   --el-datepicker-text-color: #fff;
+
+//   .el-input__suffix {
+//     display: flex;
+//     align-items: center;
+//   }
+//   .el-input__inner {
+//     background-color: #052c43 !important;
+//     border: 1px solid var(--sy_main_color6);
+//     color: #fff;
+//   }
+// }
+// .el-date-picker {
+//   --el-text-color-regular: #fff;
+//   --el-datepicker-text-color: #fff;
+// }
+// 处理输入框图标不居中问题
+.el-input {
+  .el-input__suffix {
+    display: flex;
+    align-items: center;
+  }
+}
