@@ -16,8 +16,10 @@ import * as THREE from 'three'
 import CameraControls from 'camera-controls'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js' //控制器
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js' // gltf加载器
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js' // obj加载器
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js' // gltf加载器
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js' // obj加载器
+import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js' // gltf加载器
+import { DDSLoader } from 'three/examples/jsm/loaders/DDSLoader.js' // gltf加载器
 
 // import { SubdivisionModifier } from 'three/examples/jsm/modifiers/SubdivisionModifier'
 
@@ -137,27 +139,52 @@ function init() {
 		}
 	)
 	// obj
-	const loaderObj = new OBJLoader()
+	THREE.Loader.Handlers?.add(/\.dds$/i, new DDSLoader())
+	var mtlLoader = new MTLLoader()
+	mtlLoader.setPath('/public/model/person/xiong/')
+	mtlLoader.load('man_01.obj', function (materials) {
+		materials.preload()
+		const objLoader = new OBJLoader()
+		// varobjLoader = new THREE.OBJLoader()
+		objLoader.setMaterials(materials)
+		objLoader.setPath('/public/model/person/xiong/')
+		objLoader.load(
+			'man_01.obj',
+			function (object) {
+				// object.scale.set(50, 50, 50)
 
-	loaderObj.load(
-		// resource URL
-		'/public/model/person/xiong/man_01.obj',
+				object.position.y = 0
+				scene.add(object)
+			},
+			function (xhr) {
+				tip.value = ((xhr.loaded / xhr.total) * 100).toFixed(0) + '% loaded'
 
-		// called when resource is loaded
-		function (object) {
-			scene.add(object)
-		},
-		// called when loading is in progresses
-		function (xhr) {
-			tip.value = ((xhr.loaded / xhr.total) * 100).toFixed(0) + '% loaded'
+				console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
+			},
+			// called when loading has errors
+			function (error) {}
+		)
+	})
 
-			console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
-		},
-		// called when loading has errors
-		function (error) {
-			console.log('An error happened')
-		}
-	)
+	// loaderObj.load(
+	// 	// resource URL
+	// 	'/public/model/person/xiong/man_01.obj',
+
+	// 	// called when resource is loaded
+	// 	function (object) {
+	// 		scene.add(object)
+	// 	},
+	// 	// called when loading is in progresses
+	// 	function (xhr) {
+	// 		tip.value = ((xhr.loaded / xhr.total) * 100).toFixed(0) + '% loaded'
+
+	// 		console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
+	// 	},
+	// 	// called when loading has errors
+	// 	function (error) {
+	// 		console.log('An error happened')
+	// 	}
+	// )
 
 	CameraControls.install({ THREE })
 
