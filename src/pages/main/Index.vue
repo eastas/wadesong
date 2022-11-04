@@ -45,13 +45,15 @@ onMounted(() => {})
 .bg_wrap {
 	box-sizing: border-box;
 	background-color: #b7cfe7;
+	background-color: #051e38;
 	height: 100vh;
 	width: 100vw;
 	color: #b7cfe7;
 
 	.tabs {
 		position: fixed;
-		background-color: aliceblue;
+		background-color: #051e38;
+		// background-color: rgb(5, 184, 238);
 		justify-content: space-around;
 		font-size: 20px;
 		font-weight: bold;
@@ -60,10 +62,14 @@ onMounted(() => {})
 		padding-bottom: 8px;
 		.item {
 			color: #cdd7e0;
+			color: #718ca3;
+
 			padding: 8px;
 
 			&.act {
 				color: #1b3f5e;
+				color: antiquewhite;
+
 				font-size: 24px;
 			}
 		}
