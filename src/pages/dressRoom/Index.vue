@@ -141,7 +141,7 @@ function init() {
 
 	loaderObj.load(
 		// resource URL
-		'/public/model/person/xiong/男女_01.obj',
+		'/public/model/person/xiong/man_01.obj',
 
 		// called when resource is loaded
 		function (object) {
