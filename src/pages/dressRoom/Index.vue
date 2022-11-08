@@ -62,29 +62,28 @@ function init() {
 	// 创建雾
 
 	// 创建场景
-	const color = new THREE.Color('#051e38')
+	const color = new THREE.Color('#000')
 	scene.background = color
-	// 环境光
-	const ambient = new THREE.AmbientLight(0xfcfcfc, 0.8)
 
+	// 环境光
+	const ambient = new THREE.AmbientLight(0xffffff, 0.8)
 	scene.add(ambient)
 
 	//平行光
-	// const sl: DirectionalLight = new THREE.DirectionalLight(0xcccccc, 0.8)
-	const sl: SpotLight = new THREE.SpotLight(0xfcfcfc, 0.8, 0)
-	// const sl: SpotLight = new THREE.AmbientLight(0xfcfcfc)
+	const sl: DirectionalLight = new THREE.DirectionalLight(0xcccccc, 0.8)
+	// const sl: SpotLight = new THREE.SpotLight(0xfcfcfc, 0.8, 0)
+	// const sl: AmbientLight = new THREE.AmbientLight(0xfcfcfc)
 	sl.castShadow = true
 	sl.shadow.mapSize.width = 1024
 	sl.shadow.mapSize.height = 1024
 	sl.shadow.camera.near = 2
-	sl.shadow.camera.far = 50
-
-	// sl.position.set(10, -100, 400)
+	sl.shadow.camera.far = 800
+	sl.position.set(0, 100, 600)
 
 	scene.add(sl)
 
 	// helper
-	const cameraHelper = new THREE.CameraHelper(sl.shadow.camera)
+	// const cameraHelper = new THREE.CameraHelper(sl.shadow.camera)
 	// scene.add(cameraHelper)
 
 	// Camera相机
@@ -92,17 +91,17 @@ function init() {
 	camera.position.z = 20
 	camera.position.x = 0
 	camera.position.y = 0
-	camera.rotateZ(Math.PI / 2)
+	camera.rotateY(Math.PI)
 	scene.add(camera)
 
 	// 网格互助
 	const gh = new THREE.GridHelper(sizes.width / 10, sizes.height / 10, 0x2c2c2c, 0x888888)
 	// gh.rotateX(Math.PI / 2)
-	scene.add(gh)
+	// scene.add(gh)
 
 	//坐标辅助
 	const axesHelper = new THREE.AxesHelper(5)
-	scene.add(axesHelper)
+	// scene.add(axesHelper)
 
 	//
 	//
@@ -117,21 +116,27 @@ function init() {
 		// called when the resource is loaded
 		function (gltf) {
 			tip.value = ''
+			// gltf.scale?.set(0.1, 0.1, 0.1)
+
+			gltf.scene.scale.set(1, 1, 1)
+			gltf.scene.rotateY(-Math.PI / 2)
+			// gltf.scene.rotateX(-0.1)
+			// gltf.scene.rotateZ(-0.1)
 			scene.add(gltf.scene)
+
 			gltf.animations // Array<THREE.AnimationClip>
 			gltf.scene // THREE.Group
 			gltf.scenes // Array<THREE.Group>
 			gltf.cameras // Array<THREE.Camera>
 			gltf.asset // Object
 			nextTick(() => {
-				// camera.position.z = 20
 				renderer.render(scene, camera)
+				// requestAnimationFrame(animate)
 			})
 		},
 		// called while loading is progressing
 		function (xhr) {
 			tip.value = ((xhr.loaded / xhr.total) * 100).toFixed(0) + '% loaded'
-			console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
 		},
 		// called when loading has errors
 		function (error) {
@@ -139,32 +144,29 @@ function init() {
 		}
 	)
 	// obj
-	THREE.Loader.Handlers?.add(/\.dds$/i, new DDSLoader())
-	var mtlLoader = new MTLLoader()
-	mtlLoader.setPath('/public/model/person/xiong/')
-	mtlLoader.load('man_01.obj', function (materials) {
-		materials.preload()
-		const objLoader = new OBJLoader()
-		// varobjLoader = new THREE.OBJLoader()
-		objLoader.setMaterials(materials)
-		objLoader.setPath('/public/model/person/xiong/')
-		objLoader.load(
-			'man_01.obj',
-			function (object) {
-				// object.scale.set(50, 50, 50)
-
-				object.position.y = 0
-				scene.add(object)
-			},
-			function (xhr) {
-				tip.value = ((xhr.loaded / xhr.total) * 100).toFixed(0) + '% loaded'
-
-				console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
-			},
-			// called when loading has errors
-			function (error) {}
-		)
-	})
+	// THREE.Loader.Handlers?.add(/\.dds$/i, new DDSLoader())
+	// var mtlLoader = new MTLLoader()
+	// mtlLoader.setPath('/model/person/xiong/')
+	// mtlLoader.load('man_01.mtl', function (materials) {
+	// 	materials.preload()
+	// 	const objLoader = new OBJLoader()
+	// 	// varobjLoader = new THREE.OBJLoader()
+	// 	objLoader.setMaterials(materials)
+	// 	objLoader.setPath('/model/person/xiong/')
+	// 	objLoader.load(
+	// 		'man_01.obj',
+	// 		function (object) {
+	// 			object.scale.set(0.01, 0.01, 0.01)
+	// 			object.position.y = 0
+	// 			scene.add(object)
+	// 		},
+	// 		function (xhr) {
+	// 			tip.value = ((xhr.loaded / xhr.total) * 100).toFixed(0) + '% loaded'
+	// 		},
+	// 		// called when loading has errors
+	// 		function (error) {}
+	// 	)
+	// })
 
 	// loaderObj.load(
 	// 	// resource URL
@@ -200,16 +202,28 @@ function init() {
 	// 鼠标互助
 
 	const ct = new OrbitControls(camera, renderer.domElement)
+	// ct.minAzimuthAngle = -Math.PI
+	// ct.maxAzimuthAngle = -Math.PI
+	// ct.maxPolarAngle = Math.PI
+	// ct.minPolarAngle = Math.PI
 	ct.update()
 	//监听鼠标事件，触发渲染函数，更新canvas画布渲染效果
 	ct.addEventListener('change', function () {
-		renderer.render(scene, camera) //执行渲染操作
+		console.log(scene, 'ppppp')
+
+		// renderer.render(scene, camera) //执行渲染操作
 	})
 	setTimeout(() => {
 		// camera.position.z = 20
 		renderer.render(scene, camera)
 	}, 100)
 }
+
+// function animate() {
+// 		requestAnimationFrame(animate);
+// 		render();
+// 	}
+
 function loaderGlb() {}
 onMounted(() => {
 	init()

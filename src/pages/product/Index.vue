@@ -6,7 +6,7 @@
  * @FilePath: \official_web\src\pages\product\Index.vue
 -->
 <template>
-	<div class="head_box">{{ 'wadeSong'.toLocaleUpperCase() }}</div>
+	<!-- <div class="head_box">{{ 'wadeSong'.toLocaleUpperCase() }}</div> -->
 
 	<div class="sideNav">
 		<div class="item">列表</div>
@@ -14,8 +14,20 @@
 	</div>
 
 	<div class="content_wrap">
-		<div class="card">
+		<div class="card p_r">
 			<img :src="getAssetsFile(curItem.imgSrc)" alt="" />
+			<div class="sub p_a p_lt">
+				<img :src="getAssetsFile(curItem.imgSrc)" alt="" />
+			</div>
+			<div class="sub p_a p_lb">
+				<img :src="getAssetsFile(curItem.imgSrc)" alt="" />
+			</div>
+			<div class="sub p_a p_rt">
+				<img :src="getAssetsFile(curItem.imgSrc)" alt="" />
+			</div>
+			<div class="sub p_a p_rb">
+				<img :src="getAssetsFile(curItem.imgSrc)" alt="" />
+			</div>
 		</div>
 	</div>
 	<div class="list_box">
@@ -43,61 +55,33 @@ const props = defineProps<{
 }>()
 
 const product_list = ref([
-	{
-		name: '袄',
-		type: 'gentel',
-
-		sex: 'man',
-		imgSrc: 'draft/aozi.jpg',
-	},
+	// {
+	// 	name: '袄',
+	// 	type: 'gentel',
+	// 	sex: 'man',
+	// 	imgSrc: 'draft/aozi.jpg',
+	// },
+	// {
+	// 	name: '西',
+	// 	type: 'gentel',
+	// 	sex: 'man',
+	// 	imgSrc: 'draft/xifu.jpg',
+	// },
 	{
 		name: 'jezz',
-		type: 'cough',
+		type: 'tough',
 		sex: 'man',
 		imgSrc: 'draft/tao2.jpg',
 	},
 	{
 		name: '卫衣',
-		type: 'cough',
+		type: 'tough',
 		sex: 'man',
 		imgSrc: 'draft/wyi.jpg',
 	},
-	{
-		name: '西',
-		type: 'cough',
-		sex: 'man',
-		imgSrc: 'draft/xifu.jpg',
-	},
-])
-const product_list2 = ref([
-	{
-		name: '袄',
-		type: 'gentel',
-
-		sex: 'man',
-		imgSrc: 'draft/aozi.jpg',
-	},
-	{
-		name: 'jezz',
-		type: 'cough',
-		sex: 'man',
-		imgSrc: 'draft/tao2.jpg',
-	},
-	{
-		name: '卫衣',
-		type: 'cough',
-		sex: 'man',
-		imgSrc: 'draft/wyi.jpg',
-	},
-	{
-		name: '西',
-		type: 'cough',
-		sex: 'man',
-		imgSrc: 'draft/xifu.jpg',
-	},
 ])
 
-const curItem = ref(product_list.value[1])
+const curItem = ref(product_list.value[0])
 onMounted(() => {})
 </script>
 
@@ -110,6 +94,9 @@ onMounted(() => {})
 	color: antiquewhite;
 	color: rgb(233, 35, 206);
 	color: rgb(42, 233, 35);
+	color: rgb(22, 1, 1);
+	text-shadow: #000;
+
 	font-weight: bold;
 	font-style: italic;
 	// background-color: #fff9;
@@ -140,7 +127,7 @@ onMounted(() => {})
 	display: flex;
 	// flex-flow: row wrap;
 	justify-content: space-around;
-	height: 80px;
+	height: 100px;
 
 	.prod_item {
 		width: 22%;
@@ -158,7 +145,7 @@ onMounted(() => {})
 }
 .content_wrap {
 	width: 100%;
-	padding-top: 30px;
+	padding-top: 50px;
 	.card {
 		margin: 0 auto;
 		width: 90%;
@@ -170,6 +157,14 @@ onMounted(() => {})
 		text-align: center;
 		img {
 			height: 100%;
+		}
+		.sub {
+			width: 40%;
+			height: 40%;
+
+			img {
+				height: 100%;
+			}
 		}
 	}
 }
