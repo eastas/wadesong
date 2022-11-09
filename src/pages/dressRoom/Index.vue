@@ -7,7 +7,7 @@
 -->
 <template>
 	<div class="p_a" v-if="tip">{{ tip }}</div>
-	<canvas class="full_screen" :ref="(e) => (canvasDom = e)"></canvas>
+	<canvas class=" full_screen" :ref="(e) => (canvasDom = e)"></canvas>
 </template>
 
 <script setup lang="ts">
@@ -105,68 +105,69 @@ function init() {
 
 	//
 	//
-	const loaderGlf = new GLTFLoader()
-	const dracoLoader = new DRACOLoader()
-	dracoLoader.setDecoderPath('/examples/js/libs/draco/')
-	loaderGlf.setDRACOLoader(dracoLoader)
-	// Load a glTF resource
-	loaderGlf.load(
-		// resource URL
-		'/public/model/person/scifi_girl.glb',
-		// called when the resource is loaded
-		function (gltf) {
-			tip.value = ''
-			// gltf.scale?.set(0.1, 0.1, 0.1)
+	// const loaderGlf = new GLTFLoader()
+	// const dracoLoader = new DRACOLoader()
+	// dracoLoader.setDecoderPath('/examples/js/libs/draco/')
+	// loaderGlf.setDRACOLoader(dracoLoader)
+	// // Load a glTF resource
+	// loaderGlf.load(
+	// 	// resource URL
+	// 	'/public/model/person/scifi_girl.glb',
+	// 	// called when the resource is loaded
+	// 	function (gltf) {
+	// 		tip.value = ''
+	// 		// gltf.scale?.set(0.1, 0.1, 0.1)
 
-			gltf.scene.scale.set(1, 1, 1)
-			gltf.scene.rotateY(-Math.PI / 2)
-			// gltf.scene.rotateX(-0.1)
-			// gltf.scene.rotateZ(-0.1)
-			scene.add(gltf.scene)
+	// 		gltf.scene.scale.set(1, 1, 1)
+	// 		gltf.scene.rotateY(-Math.PI / 2)
+	// 		// gltf.scene.rotateX(-0.1)
+	// 		// gltf.scene.rotateZ(-0.1)
+	// 		scene.add(gltf.scene)
 
-			gltf.animations // Array<THREE.AnimationClip>
-			gltf.scene // THREE.Group
-			gltf.scenes // Array<THREE.Group>
-			gltf.cameras // Array<THREE.Camera>
-			gltf.asset // Object
-			nextTick(() => {
-				renderer.render(scene, camera)
-				// requestAnimationFrame(animate)
-			})
-		},
-		// called while loading is progressing
-		function (xhr) {
-			tip.value = ((xhr.loaded / xhr.total) * 100).toFixed(0) + '% loaded'
-		},
-		// called when loading has errors
-		function (error) {
-			console.log('An error happened')
-		}
-	)
+	// 		gltf.animations // Array<THREE.AnimationClip>
+	// 		gltf.scene // THREE.Group
+	// 		gltf.scenes // Array<THREE.Group>
+	// 		gltf.cameras // Array<THREE.Camera>
+	// 		gltf.asset // Object
+	// 		nextTick(() => {
+	// 			renderer.render(scene, camera)
+	// 			// requestAnimationFrame(animate)
+	// 		})
+	// 	},
+	// 	// called while loading is progressing
+	// 	function (xhr) {
+	// 		tip.value = ((xhr.loaded / xhr.total) * 100).toFixed(0) + '% loaded'
+	// 	},
+	// 	// called when loading has errors
+	// 	function (error) {
+	// 		console.log('An error happened')
+	// 	}
+	// )
 	// obj
-	// THREE.Loader.Handlers?.add(/\.dds$/i, new DDSLoader())
-	// var mtlLoader = new MTLLoader()
-	// mtlLoader.setPath('/model/person/xiong/')
-	// mtlLoader.load('man_01.mtl', function (materials) {
-	// 	materials.preload()
-	// 	const objLoader = new OBJLoader()
-	// 	// varobjLoader = new THREE.OBJLoader()
-	// 	objLoader.setMaterials(materials)
-	// 	objLoader.setPath('/model/person/xiong/')
-	// 	objLoader.load(
-	// 		'man_01.obj',
-	// 		function (object) {
-	// 			object.scale.set(0.01, 0.01, 0.01)
-	// 			object.position.y = 0
-	// 			scene.add(object)
-	// 		},
-	// 		function (xhr) {
-	// 			tip.value = ((xhr.loaded / xhr.total) * 100).toFixed(0) + '% loaded'
-	// 		},
-	// 		// called when loading has errors
-	// 		function (error) {}
-	// 	)
-	// })
+	THREE.Loader.Handlers?.add(/\.dds$/i, new DDSLoader())
+	var mtlLoader = new MTLLoader()
+	mtlLoader.setPath('/model/person/xiong/')
+	mtlLoader.load('man_01.mtl', function (materials) {
+		materials.preload()
+		const objLoader = new OBJLoader()
+		// varobjLoader = new THREE.OBJLoader()
+		objLoader.setMaterials(materials)
+		objLoader.setPath('/model/person/xiong/')
+		objLoader.load(
+			'man_01.obj',
+			function (object) {
+				object.scale.set(0.01, 0.01, 0.01)
+				object.position.y = 0
+				tip.value=''
+				scene.add(object)
+			},
+			function (xhr) {
+				tip.value = ((xhr.loaded / xhr.total) * 100).toFixed(0) + '% loaded'
+			},
+			// called when loading has errors
+			function (error) {}
+		)
+	})
 
 	// loaderObj.load(
 	// 	// resource URL
@@ -209,9 +210,9 @@ function init() {
 	ct.update()
 	//监听鼠标事件，触发渲染函数，更新canvas画布渲染效果
 	ct.addEventListener('change', function () {
-		console.log(scene, 'ppppp')
+	
 
-		// renderer.render(scene, camera) //执行渲染操作
+		renderer.render(scene, camera) //执行渲染操作
 	})
 	setTimeout(() => {
 		// camera.position.z = 20
@@ -231,7 +232,8 @@ onMounted(() => {
 </script>
 
 <style lang="less" scoped>
-div {
-	color: rgb(240, 240, 240);
+.full_screen {
+	width: 80vw;
+	border: 1px dashed #fff;
 }
 </style>

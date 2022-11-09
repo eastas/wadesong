@@ -18,7 +18,7 @@ let routes: Array<RouteRecordRaw> = [
 		name: 'Home',
 
 		meta: {
-			title: 'GENTAL',
+			title: 'GENTLE',
 		},
 		component: defineAsyncComponent(() => import(`@/pages/discover/Index.vue`)),
 	},

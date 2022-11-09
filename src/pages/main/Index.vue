@@ -62,9 +62,7 @@ onMounted(() => {})
 			// top: 0;
 			font-size: 34px;
 			padding: 4px;
-			color: rgb(233, 35, 206);
-			color: rgb(42, 233, 35);
-			color: rgb(22, 1, 1);
+			
 			color: antiquewhite;
 			text-shadow: #000;
 
@@ -83,7 +81,7 @@ onMounted(() => {})
 		font-weight: bold;
 		width: 100%;
 		top: 0;
-		padding-bottom: 8px;
+		padding: 8px 20px;
 		.item {
 			color: #cdd7e0;
 			color: #718ca3;
