@@ -1,5 +1,5 @@
 {
-    "name": "official_web",
+    "name": "wadesong_web",
     "private": true,
     "version": "0.0.0",
     "scripts": {
@@ -9,8 +9,13 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@nutui/nutui": "^3.2.5",
         "axios": "^0.24.0",
+        "camera-controls": "^1.33.1",
+        "lodash": "^4.17.21",
+        "mitt": "^3.0.0",
         "qs": "^6.10.2",
+        "three": "^0.146.0",
         "vue": "^3.2.25",
         "vue-router": "4",
         "vuex": "^4.0.2"

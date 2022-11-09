@@ -38,7 +38,7 @@ const router = createRouter({
 	routes,
 })
 
-const locationTo = ref('')
+// const locationTo = ref('')
 router.beforeEach((to: any, from: any, next: any) => {
 	if (to.name === 'Login') {
 		window.sessionStorage.setItem('token', '')

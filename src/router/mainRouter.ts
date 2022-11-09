@@ -18,7 +18,7 @@ let routes: Array<RouteRecordRaw> = [
 		name: 'Home',
 
 		meta: {
-			title: '发现',
+			title: 'GENTLE',
 		},
 		component: defineAsyncComponent(() => import(`@/pages/discover/Index.vue`)),
 	},
@@ -27,7 +27,7 @@ let routes: Array<RouteRecordRaw> = [
 		name: 'Product',
 
 		meta: {
-			title: '橱窗',
+			title: 'TOUGH',
 			showSub: false,
 		},
 		component: defineAsyncComponent(() => import(`@/pages/product/Index.vue`)),
@@ -37,7 +37,7 @@ let routes: Array<RouteRecordRaw> = [
 		name: 'DressRoom',
 
 		meta: {
-			title: '试衣',
+			title: 'DRESSROOM',
 			showSub: false,
 		},
 		component: defineAsyncComponent(() => import(`@/pages/dressRoom/Index.vue`)),
@@ -47,7 +47,7 @@ let routes: Array<RouteRecordRaw> = [
 		name: 'Mine',
 
 		meta: {
-			title: '我的',
+			title: 'MINE',
 			showSub: false,
 		},
 		component: defineAsyncComponent(() => import(`@/pages/mine/Index.vue`)),

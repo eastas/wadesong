@@ -6,7 +6,7 @@
  * @FilePath: \official_web\src\pages\product\Index.vue
 -->
 <template>
-	<div>产品页</div>
+	<div>关于</div>
 </template>
 
 <script setup lang="ts">
