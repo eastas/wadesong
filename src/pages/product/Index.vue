@@ -54,7 +54,7 @@
 		</template>
 	  </div>
 	  <div class="list_box singel p_r">
-		<div class="classType p_a p_lt">单件</div>
+		<div class="classType p_a p_lt">单品</div>
   
 		<template v-for="item in sigle_list.filter((el) => el.type === 't')">
 		  <div
